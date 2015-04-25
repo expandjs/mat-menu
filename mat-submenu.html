@@ -1,0 +1,221 @@
+<!--
+@license
+Copyright (c) 2015 The expand.js authors. All rights reserved.
+This code may only be used under the BSD style license found at https://expandjs.github.io/LICENSE.txt
+The complete set of authors may be found at https://expandjs.github.io/AUTHORS.txt
+The complete set of contributors may be found at https://expandjs.github.io/CONTRIBUTORS.txt
+-->
+
+<!--
+This component is used to display a material submenu.
+
+@component mat-submenu
+@description This component is used to display a material submenu.
+
+@dependency polymer Polymer/polymer#^0.5
+@dependency expandjs ExpandJS/expandjs
+@dependency mat-option ExpandJS/mat-option
+@dependency mat-overlay ExpandJS/mat-overlay
+@dependency xp-master-state ExpandJS/xp-master-state
+@dependency xp-slave-state ExpandJS/xp-slave-state
+
+@devDependency mat-demo ExpandJS/mat-demo
+@devDependency mat-divider ExpandJS/mat-divider
+@devDependency mat-menu-button ExpandJS/mat-menu-button
+@devDependency mat-option ExpandJS/mat-option
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../expandjs/expandjs.html">
+<link rel="import" href="../mat-option/mat-option.html">
+<link rel="import" href="../mat-overlay/mat-overlay.html">
+<link rel="import" href="../xp-master-state/xp-master-state.html">
+<link rel="import" href="../xp-slave-state/xp-slave-state.html">
+
+<polymer-element name="mat-submenu" constructor="MATSubmenuElement" attributes="data empty icon iconSrc label showed submenus">
+
+    <template>
+        <style>
+            :host {
+                display: block;
+                overflow: visible;
+            }
+
+            :host #matSubmenuHolder::shadow #matOptionSecondaryIcon {
+                transform: rotate(-90deg);
+            }
+
+            :host([showed]) #matSubmenuHolder::shadow #matOptionRipple::shadow #matRippleBackground {
+                opacity: 0.5;
+            }
+
+            :host #matSubmenuOverlay::shadow #matOverlayBody {
+                padding: 16px 0;
+            }
+        </style>
+        <template context="{{}}" is="xp-master-state" id="xpMasterState" slaves="{{submenus}}" slaveTag="mat-submenu"></template>
+        <template context="{{}}" is="xp-slave-state" master="{{menu}}" masterTag="mat-menu"></template>
+        <template context="{{}}" is="xp-slave-state" master="{{supermenu}}" masterTag="mat-submenu"></template>
+        <mat-option id="matSubmenuHolder" icon="{{icon}}" iconSrc="{{iconSrc}}" label="{{label}}" secondaryIcon="navigation:arrow-drop-down" on-xp-activate="{{handleShowed}}"></mat-option>
+        <mat-overlay id="matSubmenuOverlay" background="{{menu.background}}" position="aside" showed="{{showed}}" target="{{$.matSubmenuHolder}}"><content id="content"></content></mat-overlay>
+    </template>
+
+    <script>
+        XPComponent({
+
+            /**
+             * Hides the submenu.
+             *
+             * @method hide
+             * @returns {Element}
+             */
+            hide: function () {
+                var self = this;
+                self.$.matSubmenuOverlay.hide();
+                return self;
+            },
+
+            /**
+             * Shows the submenu.
+             *
+             * @method show
+             * @returns {Element}
+             */
+            show: function () {
+                var self = this;
+                self.$.matSubmenuOverlay.show();
+                return self;
+            },
+
+            /**
+             * Toggles the submenu.
+             *
+             * @method toggle
+             * @returns {Element}
+             */
+            toggle: function () {
+                var self = this;
+                self.$.matSubmenuOverlay.toggle();
+                return self;
+            },
+
+            /*********************************************************************/
+
+            // COMPUTED
+            computed: {
+                'empty': '!label'
+            },
+
+            // OBSERVE
+            observe: {
+                'menu.showed supermenu.showed': 'showedObserver'
+            },
+
+            // PUBLISH
+            publish: {
+
+                /**
+                 * The element's data.
+                 *
+                 * @attribute data
+                 * @type *
+                 */
+                data: {reflect: false, value: null},
+
+                /**
+                 * If set to true, the element is hidden.
+                 *
+                 * @attribute empty
+                 * @type boolean
+                 * @default false
+                 * @readonly
+                 */
+                empty: {reflect: true, value: false},
+
+                /**
+                 * The submenu's icon.
+                 *
+                 * @attribute icon
+                 * @type string
+                 * @default ""
+                 */
+                icon: {reflect: true, value: ''},
+
+                /**
+                 * The submenu's icon's src.
+                 *
+                 * @attribute iconSrc
+                 * @type string
+                 * @default ""
+                 */
+                iconSrc: {reflect: true, value: ''},
+
+                /**
+                 * The submenu's label.
+                 *
+                 * @attribute label
+                 * @type string
+                 * @default ""
+                 */
+                label: {reflect: true, value: ''},
+
+                /**
+                 * The master menu.
+                 *
+                 * @attribute menu
+                 * @type Element
+                 * @readonly
+                 */
+                menu: {reflect: false, value: null},
+
+                /**
+                 * If set to true, the submenu is showed.
+                 *
+                 * @attribute showed
+                 * @type boolean
+                 * @default false
+                 */
+                showed: {reflect: true, value: false},
+
+                /**
+                 * The slave submenus.
+                 *
+                 * @attribute submenus
+                 * @type Array
+                 * @readonly
+                 */
+                submenus: {reflect: false, value: null},
+
+                /**
+                 * The master submenu.
+                 *
+                 * @attribute supermenu
+                 * @type Element
+                 * @readonly
+                 */
+                supermenu: {reflect: false, value: null}
+            },
+
+            /*********************************************************************/
+
+            // OBSERVER
+            showedChanged: function (pre, post) {
+                if (post && (this.supermenu || this.menu)) { (this.supermenu || this.menu).show(); }
+            },
+
+            // OBSERVER
+            showedObserver: function (pre, post) {
+                if (!post) { this.hide(); }
+            },
+
+            /*********************************************************************/
+
+            // HANDLER
+            handleShowed: function (event) {
+                event.stopPropagation();
+                this.show();
+            }
+        });
+    </script>
+
+</polymer-element>

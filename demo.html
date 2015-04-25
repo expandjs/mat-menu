@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+        <script>if (!('registerElement' in document && 'createShadowRoot' in HTMLElement.prototype && 'import' in document.createElement('link') && 'content' in document.createElement('template'))) document.write('<script src="/webcomponentsjs/webcomponents.js"><\/script>');</script>
+
+        <link rel="import" href="../mat-demo/mat-demo.html">
+        <link rel="import" href="../mat-divider/mat-divider.html">
+        <link rel="import" href="../mat-menu-button/mat-menu-button.html">
+        <link rel="import" href="../mat-option/mat-option.html">
+        <link rel="import" href="mat-menu.html">
+        <link rel="import" href="mat-submenu.html">
+
+    </head>
+
+    <!-- BODY -->
+    <body fullbleed unresolved>
+
+        <polymer-element name="mat-menu-demo" noscript>
+
+            <template>
+                <mat-demo label="mat-menu">
+
+                    <h1>Default</h1>
+                    <mat-menu-button target="menu"></mat-menu-button>
+                    <mat-menu id="menu">
+                        <mat-option label="Option 1"></mat-option>
+                        <mat-option label="Option 2"></mat-option>
+                        <mat-option label="Option 3"></mat-option>
+                    </mat-menu>
+
+                    <h1>Cascading</h1>
+                    <mat-menu-button target="cascadingMenu"></mat-menu-button>
+                    <mat-menu id="cascadingMenu">
+                        <mat-option label="Option 1" toggleable active></mat-option>
+                        <mat-option label="Option 2" toggleable></mat-option>
+                        <mat-option label="Option 3" toggleable></mat-option>
+                        <mat-divider></mat-divider>
+                        <mat-submenu label="Option 4">
+                            <mat-option label="Sub option 1"></mat-option>
+                            <mat-option label="Sub option 2"></mat-option>
+                            <mat-option label="Sub option 3"></mat-option>
+                        </mat-submenu>
+                        <mat-submenu label="Option 5">
+                            <mat-option label="Sub option 1"></mat-option>
+                            <mat-option label="Sub option 2"></mat-option>
+                            <mat-option label="Sub option 3"></mat-option>
+                        </mat-submenu>
+                    </mat-menu>
+
+                    <h1>Autocenter</h1>
+                    <mat-menu-button target="autoCenterMenu"></mat-menu-button>
+                    <mat-menu id="autoCenterMenu" autocenter>
+                        <mat-option label="Option 1"></mat-option>
+                        <mat-option label="Option 2"></mat-option>
+                        <mat-option label="Option 3"></mat-option>
+                    </mat-menu>
+
+                    <h1>Aside</h1>
+                    <mat-menu-button target="asideMenu"></mat-menu-button>
+                    <mat-menu id="asideMenu" position="aside">
+                        <mat-option label="Option 1"></mat-option>
+                        <mat-option label="Option 2"></mat-option>
+                        <mat-option label="Option 3"></mat-option>
+                    </mat-menu>
+
+                    <h1>Baseline</h1>
+                    <mat-menu-button target="baselineMenu"></mat-menu-button>
+                    <mat-menu id="baselineMenu" position="baseline">
+                        <mat-option label="Option 1"></mat-option>
+                        <mat-option label="Option 2"></mat-option>
+                        <mat-option label="Option 3"></mat-option>
+                    </mat-menu>
+
+                </mat-demo>
+            </template>
+
+        </polymer-element>
+
+        <mat-menu-demo></mat-menu-demo>
+
+    </body>
+
+</html>
