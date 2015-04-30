@@ -1,8 +1,8 @@
 {
   "name": "mat-menu",
   "license": "BSD-3-Clause",
-  "version": "0.8.4",
-  "description": "This element is used to display a material menu.",
+  "version": "0.8.5",
+  "description": "A custom element used to display a Material Design menu",
   "homepage": "http://www.expandjs.com/elements/mat-menu",
   "authors": [
     "Giuliano Rullo <g.rullo@expandjs.com>",
