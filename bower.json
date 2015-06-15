@@ -25,17 +25,17 @@
     "**/.*"
   ],
   "dependencies": {
-    "expandjs": "ExpandJS/expandjs",
-    "mat-option": "ExpandJS/mat-option",
-    "mat-overlay": "ExpandJS/mat-overlay",
-    "xp-master-state": "ExpandJS/xp-master-state",
-    "xp-slave-state": "ExpandJS/xp-slave-state",
+    "expandjs": "ExpandJS/expandjs#alpha",
+    "mat-option": "ExpandJS/mat-option#alpha",
+    "mat-overlay": "ExpandJS/mat-overlay#alpha",
+    "xp-master-state": "ExpandJS/xp-master-state#alpha",
+    "xp-slave-state": "ExpandJS/xp-slave-state#alpha",
     "polymer": "Polymer/polymer#^0.5"
   },
   "devDependencies": {
-    "mat-demo": "ExpandJS/mat-demo",
-    "mat-divider": "ExpandJS/mat-divider",
-    "mat-menu-button": "ExpandJS/mat-menu-button",
-    "mat-option": "ExpandJS/mat-option"
+    "mat-demo": "ExpandJS/mat-demo#alpha",
+    "mat-divider": "ExpandJS/mat-divider#alpha",
+    "mat-menu-button": "ExpandJS/mat-menu-button#alpha",
+    "mat-option": "ExpandJS/mat-option#alpha"
   }
 }
