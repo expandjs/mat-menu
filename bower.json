@@ -1,0 +1,44 @@
+{
+  "name": "mat-menu",
+  "license": "BSD-3-Clause",
+  "version": "0.9.0",
+  "description": "A custom element used to display a Material Design menu",
+  "homepage": "http://expandjs.com/elements/mat-menu",
+  "authors": [
+    "Giuliano Rullo <g.rullo@expandjs.com>",
+    "Maurizio Stefàno <m.stefano@expandjs.com>",
+    "Robert Manolea <r.manolea@expandjs.com>"
+  ],
+  "keywords": [
+    "material design",
+    "material menu",
+    "web app",
+    "html5",
+    "expandjs",
+    "web-components"
+  ],
+  "main": [
+    "mat-menu.html",
+    "mat-submenu.html"
+  ],
+  "ignore": [
+    "**/.*"
+  ],
+  "dependencies": {
+    "expandjs": "ExpandJS/expandjs",
+    "mat-icons": "ExpandJS/mat-icons",
+    "mat-option": "ExpandJS/mat-option",
+    "mat-overlay": "ExpandJS/mat-overlay",
+    "xp-master-state": "ExpandJS/xp-master-state",
+    "xp-referral-behavior": "ExpandJS/xp-referral-behavior",
+    "xp-slave-state": "ExpandJS/xp-slave-state",
+    "xp-targeter-behavior": "ExpandJS/xp-targeter-behavior",
+    "polymer": "Polymer/polymer"
+  },
+  "devDependencies": {
+    "mat-demo": "ExpandJS/mat-demo",
+    "mat-divider": "ExpandJS/mat-divider",
+    "mat-menu-button": "ExpandJS/mat-menu-button",
+    "mat-option": "ExpandJS/mat-option"
+  }
+}
