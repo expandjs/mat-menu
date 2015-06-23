@@ -16,19 +16,19 @@ This element is used to display a material submenu.
 @homepage http://expandjs.com/elements/mat-submenu
 @demo http://expandjs.com/demo/mat-menu
 
-@dependency polymer Polymer/polymer
-@dependency expandjs ExpandJS/expandjs
-@dependency mat-icons ExpandJS/mat-icons
-@dependency mat-option ExpandJS/mat-option
-@dependency mat-overlay ExpandJS/mat-overlay
-@dependency xp-master-state ExpandJS/xp-master-state
-@dependency xp-referral-behavior ExpandJS/xp-referral-behavior
-@dependency xp-slave-state ExpandJS/xp-slave-state
+@dependency polymer Polymer/polymer#^1.0.4
+@dependency expandjs ExpandJS/expandjs#0.9.1
+@dependency mat-icons ExpandJS/mat-icons#0.9.1
+@dependency mat-option ExpandJS/mat-option#0.9.1
+@dependency mat-overlay ExpandJS/mat-overlay#0.9.1
+@dependency xp-master-state ExpandJS/xp-master-state#0.9.1
+@dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.1
+@dependency xp-slave-state ExpandJS/xp-slave-state#0.9.1
 
-@devDependency mat-demo ExpandJS/mat-demo
-@devDependency mat-divider ExpandJS/mat-divider
-@devDependency mat-menu-button ExpandJS/mat-menu-button
-@devDependency mat-option ExpandJS/mat-option
+@devDependency mat-demo ExpandJS/mat-demo#0.9.1
+@devDependency mat-divider ExpandJS/mat-divider#0.9.1
+@devDependency mat-menu-button ExpandJS/mat-menu-button#0.9.1
+@devDependency mat-option ExpandJS/mat-option#0.9.1
 -->
 
 <link rel="import" href="../polymer/polymer.html">
@@ -63,9 +63,9 @@ This element is used to display a material submenu.
     </style>
 
     <template>
-        <xp-master-state id="xpMasterState" slaves="{{submenus}}" slaveTag="mat-submenu"></xp-master-state>
-        <xp-slave-state master="{{menu}}" masterTag="mat-menu"></xp-slave-state>
-        <xp-slave-state master="{{supermenu}}" masterTag="mat-submenu"></xp-slave-state>
+        <template is="xp-master-state" id="xpMasterState" slaves="{{submenus}}" slave-tag="mat-submenu"></template>
+        <template is="xp-slave-state" master="{{menu}}" master-tag="mat-menu"></template>
+        <template is="xp-slave-state" master="{{supermenu}}" master-tag="mat-submenu"></template>
         <mat-option id="matSubmenuHolder" icon="[[icon]]" icon-src="[[iconSrc]]" label="[[label]]" secondary-icon="navigation:arrow-drop-down" on-xp-activate="_handleShow"></mat-option>
         <mat-overlay id="matSubmenuOverlay" background="[[background]]" position="aside" showed="{{showed}}" target="[[self.$.matSubmenuHolder]]" z="[[z]]">
             <content id="content"></content>
@@ -305,12 +305,22 @@ This element is used to display a material submenu.
 
             // HANDLER
             _handleHide: function () {
-                if (!(this.supermenu || this.menu).showed) { this.hide(); }
+
+                // Vars
+                var self = this,
+                    menu = self.supermenu || self.menu;
+
+                // Hiding
+                if (menu && !menu.showed) { self.hide(); }
             },
 
             // HANDLER
             _handleShow: function (event) {
+
+                // Stopping
                 event.stopPropagation();
+
+                // Showing
                 this.show();
             }
         });
