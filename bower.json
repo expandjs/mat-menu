@@ -33,7 +33,7 @@
     "xp-referral-behavior": "ExpandJS/xp-referral-behavior#0.9.1",
     "xp-slave-state": "ExpandJS/xp-slave-state#0.9.1",
     "xp-targeter-behavior": "ExpandJS/xp-targeter-behavior#0.9.1",
-    "polymer": "Polymer/polymer#^1.0.4"
+    "polymer": "Polymer/polymer#^1.0.0"
   },
   "devDependencies": {
     "mat-demo": "ExpandJS/mat-demo#0.9.1",
