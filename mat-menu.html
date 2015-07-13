@@ -16,22 +16,30 @@ This element is used to display a material menu.
 @homepage http://expandjs.com/elements/mat-menu
 @demo http://expandjs.com/demo/mat-menu
 
-@dependency polymer Polymer/polymer#^1.0.0
-@dependency expandjs ExpandJS/expandjs#0.9.3
-@dependency mat-overlay ExpandJS/mat-overlay#0.9.3
-@dependency xp-master-state ExpandJS/xp-master-state#0.9.3
-@dependency xp-targeter-behavior ExpandJS/xp-targeter-behavior#0.9.3
+@wraps mat-overlay http://expandjs.com/elements/mat-overlay
+@behavior xp-referral-behavior http://expandjs.com/elements/xp-referral-behavior
+@behavior xp-targeter-behavior http://expandjs.com/elements/xp-targeter-behavior
 
-@devDependency mat-demo ExpandJS/mat-demo#0.9.3
-@devDependency mat-divider ExpandJS/mat-divider#0.9.3
-@devDependency mat-menu-button ExpandJS/mat-menu-button#0.9.3
-@devDependency mat-option ExpandJS/mat-option#0.9.3
+@dependency polymer Polymer/polymer#^1.0.0
+@dependency expandjs ExpandJS/expandjs#0.9.4
+@dependency mat-option ExpandJS/mat-option#0.9.4
+@dependency mat-overlay ExpandJS/mat-overlay#0.9.4
+@dependency xp-master-state ExpandJS/xp-master-state#0.9.4
+@dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.4
+@dependency xp-targeter-behavior ExpandJS/xp-targeter-behavior#0.9.4
+
+@devDependency mat-demo ExpandJS/mat-demo#0.9.4
+@devDependency mat-divider ExpandJS/mat-divider#0.9.4
+@devDependency mat-menu-button ExpandJS/mat-menu-button#0.9.4
+@devDependency mat-option ExpandJS/mat-option#0.9.4
 -->
 
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../expandjs/expandjs.html">
+<link rel="import" href="../mat-option/mat-option.html">
 <link rel="import" href="../mat-overlay/mat-overlay.html">
 <link rel="import" href="../xp-master-state/xp-master-state.html">
+<link rel="import" href="../xp-referral-behavior/xp-referral-behavior.html">
 <link rel="import" href="../xp-targeter-behavior/xp-targeter-behavior.html">
 
 <dom-module id="mat-menu">
@@ -50,7 +58,7 @@ This element is used to display a material menu.
 
     <template>
         <template is="xp-master-state" id="xpMasterState" slaves="{{submenus}}" slave-tag="mat-submenu" on-slaves-changed="_handleSlaves"></template>
-        <mat-overlay id="matMenuWrapper" background="[[background]]" data="{{data}}" position="[[_computePosition(cascade)]]" showed="{{showed}}" target="{{target}}" z="[[z]]">
+        <mat-overlay id="matMenuWrapper" background="[[background]]" context="[[self]]" data="{{data}}" position="[[_computePosition(cascade)]]" showed="{{showed}}" target="{{target}}" z="[[z]]">
             <content id="content"></content>
         </mat-overlay>
     </template>
@@ -63,6 +71,7 @@ This element is used to display a material menu.
 
             // BEHAVIORS
             behaviors: [
+                Polymer.XPReferralBehavior,
                 Polymer.XPTargeterBehavior
             ],
 
@@ -84,7 +93,7 @@ This element is used to display a material menu.
              * Shows the menu.
              *
              * @method show
-             * @param {Element | string} target
+             * @param {Element | string} [target]
              * @param {*} [data]
              * @returns {Element}
              */
@@ -98,7 +107,7 @@ This element is used to display a material menu.
              * Toggles the menu.
              *
              * @method toggle
-             * @param {Element | string} target
+             * @param {Element | string} [target]
              * @param {*} [data]
              * @returns {Element}
              */
