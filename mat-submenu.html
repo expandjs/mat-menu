@@ -18,6 +18,7 @@ It must be used in conjunction with mat-menu.
 @demo http://expandjs.com/demo/mat-menu
 
 @wraps mat-overlay http://expandjs.com/elements/mat-overlay
+@behavior xp-adapter-behavior http://expandjs.com/elements/xp-adapter-behavior
 @behavior xp-referral-behavior http://expandjs.com/elements/xp-referral-behavior
 
 @dependency polymer Polymer/polymer#^1.0.0
@@ -41,6 +42,7 @@ It must be used in conjunction with mat-menu.
 <link rel="import" href="../mat-option/mat-option.html">
 <link rel="import" href="../mat-overlay/mat-overlay.html">
 <link rel="import" href="../xp-master-state/xp-master-state.html">
+<link rel="import" href="../xp-adapter-behavior/xp-adapter-behavior.html">
 <link rel="import" href="../xp-referral-behavior/xp-referral-behavior.html">
 <link rel="import" href="../xp-slave-state/xp-slave-state.html">
 <link rel="import" href="mat-menu.html">
@@ -62,7 +64,7 @@ It must be used in conjunction with mat-menu.
             opacity: 0.10;
         }
 
-        :host #matSubmenuOverlay::shadow #matOverlayBody {
+        :host #matSubmenuAdaptee::shadow #matOverlayBody {
             padding: 16px 0;
         }
     </style>
@@ -72,7 +74,7 @@ It must be used in conjunction with mat-menu.
         <template is="xp-slave-state" master="{{menu}}" master-tag="mat-menu"></template>
         <template is="xp-slave-state" master="{{supermenu}}" master-tag="mat-submenu"></template>
         <mat-option id="matSubmenuHolder" icon="[[icon]]" icon-src="[[iconSrc]]" label="[[label]]" secondary-icon="navigation:arrow-drop-down" on-xp-activate="_handleShow"></mat-option>
-        <mat-overlay id="matSubmenuOverlay" background="[[background]]" context="[[self]]" position="aside" showed="{{showed}}" target="[[self.$.matSubmenuHolder]]" z="[[z]]">
+        <mat-overlay id="matSubmenuAdaptee" background="[[background]]" context="[[self]]" position="aside" showed="{{showed}}" target="[[self.$.matSubmenuHolder]]" z="[[z]]">
             <content id="content"></content>
         </mat-overlay>
     </template>
@@ -85,6 +87,7 @@ It must be used in conjunction with mat-menu.
 
             // BEHAVIORS
             behaviors: [
+                Polymer.XPAdapterBehavior,
                 Polymer.XPReferralBehavior
             ],
 
@@ -98,7 +101,7 @@ It must be used in conjunction with mat-menu.
              */
             hide: function () {
                 var self = this;
-                self.$.matSubmenuOverlay.hide();
+                if (self.adaptee) { self.adaptee.hide(); }
                 return self;
             },
 
@@ -110,7 +113,7 @@ It must be used in conjunction with mat-menu.
              */
             show: function () {
                 var self = this;
-                self.$.matSubmenuOverlay.show();
+                if (self.adaptee) { self.adaptee.show(); }
                 return self;
             },
 
@@ -122,7 +125,7 @@ It must be used in conjunction with mat-menu.
              */
             toggle: function () {
                 var self = this;
-                self.$.matSubmenuOverlay.toggle();
+                if (self.adaptee) { self.adaptee.toggle(); }
                 return self;
             },
 
@@ -304,6 +307,13 @@ It must be used in conjunction with mat-menu.
 
                 // Showing
                 if (post && (self.supermenu || self.menu)) { (self.supermenu || self.menu).show(); }
+            },
+
+            /*********************************************************************/
+
+            // LISTENER
+            ready: function () {
+                this._adapt(this.$.matSubmenuAdaptee);
             },
 
             /*********************************************************************/

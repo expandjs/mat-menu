@@ -17,6 +17,7 @@ This element is used to display a material menu.
 @demo http://expandjs.com/demo/mat-menu
 
 @wraps mat-overlay http://expandjs.com/elements/mat-overlay
+@behavior xp-adapter-behavior http://expandjs.com/elements/xp-adapter-behavior
 @behavior xp-referral-behavior http://expandjs.com/elements/xp-referral-behavior
 @behavior xp-targeter-behavior http://expandjs.com/elements/xp-targeter-behavior
 
@@ -25,6 +26,7 @@ This element is used to display a material menu.
 @dependency mat-option ExpandJS/mat-option#0.9.4
 @dependency mat-overlay ExpandJS/mat-overlay#0.9.4
 @dependency xp-master-state ExpandJS/xp-master-state#0.9.4
+@dependency xp-adapter-behavior ExpandJS/xp-adapter-behavior#0.9.4
 @dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.4
 @dependency xp-targeter-behavior ExpandJS/xp-targeter-behavior#0.9.4
 
@@ -39,6 +41,7 @@ This element is used to display a material menu.
 <link rel="import" href="../mat-option/mat-option.html">
 <link rel="import" href="../mat-overlay/mat-overlay.html">
 <link rel="import" href="../xp-master-state/xp-master-state.html">
+<link rel="import" href="../xp-adapter-behavior/xp-adapter-behavior.html">
 <link rel="import" href="../xp-referral-behavior/xp-referral-behavior.html">
 <link rel="import" href="../xp-targeter-behavior/xp-targeter-behavior.html">
 
@@ -51,14 +54,14 @@ This element is used to display a material menu.
             position: absolute;
         }
 
-        :host([cascade]) #matMenuWrapper::shadow #matOverlayBody {
+        :host([cascade]) #matMenuAdaptee::shadow #matOverlayBody {
             padding: 16px 0;
         }
     </style>
 
     <template>
         <template is="xp-master-state" id="xpMasterState" slaves="{{submenus}}" slave-tag="mat-submenu" on-slaves-changed="_handleSlaves"></template>
-        <mat-overlay id="matMenuWrapper" background="[[background]]" context="[[self]]" data="{{data}}" position="[[_computePosition(cascade)]]" showed="{{showed}}" target="{{target}}" z="[[z]]">
+        <mat-overlay id="matMenuAdaptee" background="[[background]]" context="[[self]]" data="{{data}}" position="[[_computePosition(cascade)]]" showed="{{showed}}" target="{{target}}" z="[[z]]">
             <content id="content"></content>
         </mat-overlay>
     </template>
@@ -71,6 +74,7 @@ This element is used to display a material menu.
 
             // BEHAVIORS
             behaviors: [
+                Polymer.XPAdapterBehavior,
                 Polymer.XPReferralBehavior,
                 Polymer.XPTargeterBehavior
             ],
@@ -85,7 +89,7 @@ This element is used to display a material menu.
              */
             hide: function () {
                 var self = this;
-                self.$.matMenuWrapper.hide();
+                if (self.adaptee) { self.adaptee.hide(); }
                 return self;
             },
 
@@ -99,7 +103,7 @@ This element is used to display a material menu.
              */
             show: function (target, data) {
                 var self = this;
-                self.$.matMenuWrapper.show(target, data);
+                if (self.adaptee) { self.adaptee.show(target, data); }
                 return self;
             },
 
@@ -113,7 +117,7 @@ This element is used to display a material menu.
              */
             toggle: function (target, data) {
                 var self = this;
-                self.$.matMenuWrapper.toggle(target, data);
+                if (self.adaptee) { self.adaptee.toggle(target, data); }
                 return self;
             },
 
@@ -222,6 +226,13 @@ This element is used to display a material menu.
             // OBSERVER
             _backgroundChanged: function (post) {
                 XP.forEach(this.submenus || [], function (submenu) { submenu.background = post; });
+            },
+
+            /*********************************************************************/
+
+            // LISTENER
+            ready: function () {
+                this._adapt(this.$.matMenuAdaptee);
             },
 
             /*********************************************************************/
