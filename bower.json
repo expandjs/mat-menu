@@ -29,6 +29,7 @@
     "mat-icons": "ExpandJS/mat-icons#0.9.4",
     "mat-option": "ExpandJS/mat-option#0.9.4",
     "mat-overlay": "ExpandJS/mat-overlay#0.9.4",
+    "xp-adapter-behavior": "ExpandJS/xp-adapter-behavior#0.9.4",
     "xp-master-state": "ExpandJS/xp-master-state#0.9.4",
     "xp-referral-behavior": "ExpandJS/xp-referral-behavior#0.9.4",
     "xp-slave-state": "ExpandJS/xp-slave-state#0.9.4",
