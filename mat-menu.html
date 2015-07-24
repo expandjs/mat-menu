@@ -7,7 +7,49 @@ The complete set of contributors may be found at https://expandjs.github.io/CONT
 -->
 
 <!--
-This element is used to display a material menu.
+An element used to display a [Material Design menu](http://www.google.com/design/spec/components/menus.html).
+
+For an easier integration, it's recommended to use it in conjunction with
+[mat-menu-button](http://expandjs.com/elements/mat-menu-button) and
+[mat-option](/http://expandjs.comelements/mat-option).
+
+```html
+<mat-menu-button target="myMenu"></mat-menu-button>
+<mat-menu id="myMenu">
+    <mat-option label="First option"></mat-option>
+    <mat-option label="Second option"></mat-option>
+    <mat-option label="Third option"></mat-option>
+</mat-menu>
+```
+
+In addition to the default view mode, it provides a
+[cascading](http://www.google.com/design/spec/components/menus.html#menus-menu-items) one,
+which is similar to most desktop applications' menus.
+
+```html
+<mat-menu-button target="myMenu"></mat-menu-button>
+<mat-menu id="myMenu" cascading>
+    <mat-option label="First option"></mat-option>
+    <mat-option label="Second option"></mat-option>
+    <mat-option label="Third option"></mat-option>
+</mat-menu>
+```
+
+Menus can also contain [mat-submenu](http://expandjs.com/elements/mat-submenu), allowing for multi level menu.
+
+```html
+<mat-menu-button target="myMenu"></mat-menu-button>
+<mat-menu id="myMenu">
+    <mat-option label="First option"></mat-option>
+    <mat-option label="Second option"></mat-option>
+    <mat-option label="Third option"></mat-option>
+    <mat-submenu label="Fourth option">
+        <mat-option label="Sub option 1"></mat-option>
+        <mat-option label="Sub option 2"></mat-option>
+        <mat-option label="Sub option 3"></mat-option>
+    </mat-submenu>
+</mat-menu>
+```
 
 @element mat-menu
 @description A custom element used to display a Material Design menu
@@ -16,24 +58,24 @@ This element is used to display a material menu.
 @homepage http://expandjs.com/elements/mat-menu
 @demo http://expandjs.com/demo/mat-menu
 
-@wraps mat-overlay http://expandjs.com/elements/mat-overlay
-@behavior xp-adapter-behavior http://expandjs.com/elements/xp-adapter-behavior
-@behavior xp-referral-behavior http://expandjs.com/elements/xp-referral-behavior
-@behavior xp-targeter-behavior http://expandjs.com/elements/xp-targeter-behavior
+@adapts mat-overlay /bower_components/mat-overlay/mat-overlay.html
+@behavior xp-adapter-behavior /bower_components/xp-adapter-behavior/xp-adapter-behavior.html
+@behavior xp-referral-behavior /bower_components/xp-referral-behavior/xp-referral-behavior.html
+@behavior xp-targeter-behavior /bower_components/xp-targeter-behavior/xp-targeter-behavior.html
 
 @dependency polymer Polymer/polymer#^1.0.0
-@dependency expandjs ExpandJS/expandjs#0.9.4
-@dependency mat-option ExpandJS/mat-option#0.9.4
-@dependency mat-overlay ExpandJS/mat-overlay#0.9.4
-@dependency xp-master-state ExpandJS/xp-master-state#0.9.4
-@dependency xp-adapter-behavior ExpandJS/xp-adapter-behavior#0.9.4
-@dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.4
-@dependency xp-targeter-behavior ExpandJS/xp-targeter-behavior#0.9.4
+@dependency expandjs ExpandJS/expandjs#0.9.5
+@dependency mat-option ExpandJS/mat-option#0.9.5
+@dependency mat-overlay ExpandJS/mat-overlay#0.9.5
+@dependency xp-master-state ExpandJS/xp-master-state#0.9.5
+@dependency xp-adapter-behavior ExpandJS/xp-adapter-behavior#0.9.5
+@dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.5
+@dependency xp-targeter-behavior ExpandJS/xp-targeter-behavior#0.9.5
 
-@devDependency mat-demo ExpandJS/mat-demo#0.9.4
-@devDependency mat-divider ExpandJS/mat-divider#0.9.4
-@devDependency mat-menu-button ExpandJS/mat-menu-button#0.9.4
-@devDependency mat-option ExpandJS/mat-option#0.9.4
+@devDependency mat-demo ExpandJS/mat-demo#0.9.5
+@devDependency mat-divider ExpandJS/mat-divider#0.9.5
+@devDependency mat-menu-button ExpandJS/mat-menu-button#0.9.5
+@devDependency mat-option ExpandJS/mat-option#0.9.5
 -->
 
 <link rel="import" href="../polymer/polymer.html">

@@ -7,9 +7,23 @@ The complete set of contributors may be found at https://expandjs.github.io/CONT
 -->
 
 <!--
-This element is used to display a material submenu.
+An element used to display a [Material Design submenu](http://www.google.com/design/spec/components/menus.html).
 
-It must be used in conjunction with mat-menu.
+It must be used inside a [mat-menu](http://expandjs.com/elements/mat-menu) or inside another submenu.
+
+```html
+<mat-menu-button target="myMenu"></mat-menu-button>
+<mat-menu id="myMenu">
+    <mat-option label="First option"></mat-option>
+    <mat-option label="Second option"></mat-option>
+    <mat-option label="Third option"></mat-option>
+    <mat-submenu label="Fourth option">
+        <mat-option label="Sub option 1"></mat-option>
+        <mat-option label="Sub option 2"></mat-option>
+        <mat-option label="Sub option 3"></mat-option>
+    </mat-submenu>
+</mat-menu>
+```
 
 @element mat-submenu
 @description A custom element used to display a Material Design submenu
@@ -18,23 +32,23 @@ It must be used in conjunction with mat-menu.
 @homepage http://expandjs.com/elements/mat-submenu
 @demo http://expandjs.com/demo/mat-menu
 
-@wraps mat-overlay http://expandjs.com/elements/mat-overlay
-@behavior xp-adapter-behavior http://expandjs.com/elements/xp-adapter-behavior
-@behavior xp-referral-behavior http://expandjs.com/elements/xp-referral-behavior
+@adapts mat-overlay /bower_components/mat-overlay/mat-overlay.html
+@behavior xp-adapter-behavior /bower_components/xp-adapter-behavior/xp-adapter-behavior.html
+@behavior xp-referral-behavior /bower_components/xp-referral-behavior/xp-referral-behavior.html
 
 @dependency polymer Polymer/polymer#^1.0.0
-@dependency expandjs ExpandJS/expandjs#0.9.4
-@dependency mat-icons ExpandJS/mat-icons#0.9.4
-@dependency mat-option ExpandJS/mat-option#0.9.4
-@dependency mat-overlay ExpandJS/mat-overlay#0.9.4
-@dependency xp-master-state ExpandJS/xp-master-state#0.9.4
-@dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.4
-@dependency xp-slave-state ExpandJS/xp-slave-state#0.9.4
+@dependency expandjs ExpandJS/expandjs#0.9.5
+@dependency mat-icons ExpandJS/mat-icons#0.9.5
+@dependency mat-option ExpandJS/mat-option#0.9.5
+@dependency mat-overlay ExpandJS/mat-overlay#0.9.5
+@dependency xp-master-state ExpandJS/xp-master-state#0.9.5
+@dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.5
+@dependency xp-slave-state ExpandJS/xp-slave-state#0.9.5
 
-@devDependency mat-demo ExpandJS/mat-demo#0.9.4
-@devDependency mat-divider ExpandJS/mat-divider#0.9.4
-@devDependency mat-menu-button ExpandJS/mat-menu-button#0.9.4
-@devDependency mat-option ExpandJS/mat-option#0.9.4
+@devDependency mat-demo ExpandJS/mat-demo#0.9.5
+@devDependency mat-divider ExpandJS/mat-divider#0.9.5
+@devDependency mat-menu-button ExpandJS/mat-menu-button#0.9.5
+@devDependency mat-option ExpandJS/mat-option#0.9.5
 -->
 
 <link rel="import" href="../polymer/polymer.html">
