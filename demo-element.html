@@ -1,6 +1,7 @@
 <link rel="import" href="../mat-demo/mat-demo.html">
 <link rel="import" href="../mat-divider/mat-divider.html">
-<link rel="import" href="../mat-menu-button/mat-menu-button.html">
+<link rel="import" href="../mat-icon-button/mat-icon-button.html">
+<link rel="import" href="../mat-icons/navigation-icons.html">
 <link rel="import" href="../mat-option/mat-option.html">
 <link rel="import" href="mat-menu.html">
 <link rel="import" href="mat-submenu.html">
@@ -13,14 +14,14 @@
 
             <mat-demo-panel label="Default">
                 <script type="text/html">
-                    <mat-menu-button target="demoDefault"></mat-menu-button>
+                    <mat-icon-button icon="navigation:more-vert" target="demoDefault" toggles-target></mat-icon-button>
                     <mat-menu id="demoDefault">
                         <mat-option label="Option 1"></mat-option>
                         <mat-option label="Option 2"></mat-option>
                         <mat-option label="Option 3"></mat-option>
                     </mat-menu>
                 </script>
-                <mat-menu-button target="demoDefault"></mat-menu-button>
+                <mat-icon-button icon="navigation:more-vert" target="demoDefault" toggles-target></mat-icon-button>
                 <mat-menu id="demoDefault">
                     <mat-option label="Option 1"></mat-option>
                     <mat-option label="Option 2"></mat-option>
@@ -30,7 +31,7 @@
 
             <mat-demo-panel label="Cascading">
                 <script type="text/html">
-                    <mat-menu-button target="demoCascading"></mat-menu-button>
+                    <mat-icon-button icon="navigation:more-vert" target="demoCascading" toggles-target></mat-icon-button>
                     <mat-menu id="demoCascading">
                         <mat-option label="Option 1" toggleable active></mat-option>
                         <mat-option label="Option 2" toggleable></mat-option>
@@ -51,7 +52,7 @@
                         </mat-submenu>
                     </mat-menu>
                 </script>
-                <mat-menu-button target="demoCascading"></mat-menu-button>
+                <mat-icon-button icon="navigation:more-vert" target="demoCascading" toggles-target></mat-icon-button>
                 <mat-menu id="demoCascading">
                     <mat-option label="Option 1" toggleable active></mat-option>
                     <mat-option label="Option 2" toggleable></mat-option>

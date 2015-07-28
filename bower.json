@@ -39,7 +39,8 @@
   "devDependencies": {
     "mat-demo": "ExpandJS/mat-demo#0.9.5",
     "mat-divider": "ExpandJS/mat-divider#0.9.5",
-    "mat-menu-button": "ExpandJS/mat-menu-button#0.9.5",
+    "mat-icon-button": "ExpandJS/mat-icon-button#0.9.5",
+    "mat-icons": "ExpandJS/mat-icons#0.9.5",
     "mat-option": "ExpandJS/mat-option#0.9.5"
   }
 }
