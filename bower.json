@@ -2,6 +2,7 @@
   "name": "mat-menu",
   "license": "BSD-3-Clause",
   "version": "0.9.6",
+  "main": "mat-menu.html",
   "description": "A custom element used to display a Material Design menu",
   "homepage": "http://expandjs.com/elements/mat-menu",
   "authors": [
@@ -16,10 +17,6 @@
     "html5",
     "expandjs",
     "web-components"
-  ],
-  "main": [
-    "mat-menu.html",
-    "mat-submenu.html"
   ],
   "ignore": [
     "**/.*"
