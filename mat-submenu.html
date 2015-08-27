@@ -69,31 +69,33 @@ It must be used inside a [mat-menu](http://expandjs.com/elements/mat-menu) or in
 
 <dom-module id="mat-submenu">
 
-    <style>
-        :host {
-            display: block;
-            overflow: visible;
-        }
-
-        :host #matSubmenuHolder::shadow #matOptionSecondaryIcon {
-            -webkit-transform: rotate(-90deg);
-            transform: rotate(-90deg);
-        }
-
-        :host([showed]) #matSubmenuHolder::shadow #matOptionRipple #matRippleBackground {
-            opacity: 0.10;
-        }
-
-        :host #matSubmenuAdaptee::shadow #matOverlayBody {
-            padding: 16px 0;
-        }
-    </style>
-
     <template>
+
+        <style>
+            :host {
+                display: block;
+                overflow: visible;
+            }
+
+            :host #matSubmenuHolder::shadow #matOptionSecondaryIcon {
+                -webkit-transform: rotate(-90deg);
+                transform: rotate(-90deg);
+            }
+
+            :host([showed]) #matSubmenuHolder::shadow #matOptionRipple #matRippleBackground {
+                opacity: 0.10;
+            }
+
+            :host #matSubmenuAdaptee::shadow #matOverlayBody {
+                padding: 16px 0;
+            }
+        </style>
+
         <mat-option id="matSubmenuHolder" icon="[[icon]]" icon-src="[[iconSrc]]" label="[[label]]" secondary-icon="navigation:arrow-drop-down" on-xp-activate="_handleShow"></mat-option>
         <mat-overlay id="matSubmenuAdaptee" background="[[background]]" context="[[self]]" position="aside" showed="{{showed}}" target="[[self.$.matSubmenuHolder]]" z="[[z]]">
             <content id="content"></content>
         </mat-overlay>
+
     </template>
 
     <script>

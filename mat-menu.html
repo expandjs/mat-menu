@@ -92,22 +92,24 @@ Menus can also contain [mat-submenu](http://expandjs.com/elements/mat-submenu), 
 
 <dom-module id="mat-menu">
 
-    <style>
-        :host {
-            display: block;
-            overflow: visible;
-            position: absolute;
-        }
-
-        :host([cascade]) #matMenuAdaptee::shadow #matOverlayBody {
-            padding: 16px 0;
-        }
-    </style>
-
     <template>
+
+        <style>
+            :host {
+                display: block;
+                overflow: visible;
+                position: absolute;
+            }
+
+            :host([cascade]) #matMenuAdaptee::shadow #matOverlayBody {
+                padding: 16px 0;
+            }
+        </style>
+
         <mat-overlay id="matMenuAdaptee" background="[[background]]" context="[[self]]" data="{{data}}" position="[[_computePosition(cascade)]]" showed="{{showed}}" target="{{target}}" z="[[z]]">
             <content id="content"></content>
         </mat-overlay>
+
     </template>
 
     <script>
