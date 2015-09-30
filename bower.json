@@ -1,7 +1,7 @@
 {
   "name": "mat-menu",
   "license": "BSD-3-Clause",
-  "version": "0.9.9",
+  "version": "0.9.10",
   "main": "mat-menu.html",
   "description": "A custom element used to display a Material Design menu",
   "homepage": "http://expandjs.com/elements/mat-menu",
@@ -22,22 +22,22 @@
     "**/.*"
   ],
   "dependencies": {
-    "expandjs": "ExpandJS/expandjs#0.9.9",
-    "mat-icons": "ExpandJS/mat-icons#0.9.9",
-    "mat-option": "ExpandJS/mat-option#0.9.9",
-    "mat-overlay": "ExpandJS/mat-overlay#0.9.9",
-    "xp-adapter-behavior": "ExpandJS/xp-adapter-behavior#0.9.9",
-    "xp-master-behavior": "ExpandJS/xp-master-behavior#0.9.9",
-    "xp-referral-behavior": "ExpandJS/xp-referral-behavior#0.9.9",
-    "xp-slave-behavior": "ExpandJS/xp-slave-behavior#0.9.9",
-    "xp-targeter-behavior": "ExpandJS/xp-targeter-behavior#0.9.9",
+    "expandjs": "ExpandJS/expandjs#0.9.10",
+    "mat-icons": "ExpandJS/mat-icons#0.9.10",
+    "mat-option": "ExpandJS/mat-option#0.9.10",
+    "mat-overlay": "ExpandJS/mat-overlay#0.9.10",
+    "xp-adapter-behavior": "ExpandJS/xp-adapter-behavior#0.9.10",
+    "xp-master-behavior": "ExpandJS/xp-master-behavior#0.9.10",
+    "xp-referral-behavior": "ExpandJS/xp-referral-behavior#0.9.10",
+    "xp-slave-behavior": "ExpandJS/xp-slave-behavior#0.9.10",
+    "xp-targeter-behavior": "ExpandJS/xp-targeter-behavior#0.9.10",
     "polymer": "Polymer/polymer#^1.0.0"
   },
   "devDependencies": {
-    "mat-demo": "ExpandJS/mat-demo#0.9.9",
-    "mat-divider": "ExpandJS/mat-divider#0.9.9",
-    "mat-icon-button": "ExpandJS/mat-icon-button#0.9.9",
-    "mat-icons": "ExpandJS/mat-icons#0.9.9",
-    "mat-option": "ExpandJS/mat-option#0.9.9"
+    "mat-demo": "ExpandJS/mat-demo#0.9.10",
+    "mat-divider": "ExpandJS/mat-divider#0.9.10",
+    "mat-icon-button": "ExpandJS/mat-icon-button#0.9.10",
+    "mat-icons": "ExpandJS/mat-icons#0.9.10",
+    "mat-option": "ExpandJS/mat-option#0.9.10"
   }
 }

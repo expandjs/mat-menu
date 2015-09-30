@@ -40,20 +40,20 @@ It must be used inside a [mat-menu](http://expandjs.com/elements/mat-menu) or in
 @behavior xp-slave-behavior /bower_components/xp-slave-behavior/xp-slave-behavior.html
 
 @dependency polymer Polymer/polymer#^1.0.0
-@dependency expandjs ExpandJS/expandjs#0.9.9
-@dependency mat-icons ExpandJS/mat-icons#0.9.9
-@dependency mat-option ExpandJS/mat-option#0.9.9
-@dependency mat-overlay ExpandJS/mat-overlay#0.9.9
-@dependency xp-adapter-behavior ExpandJS/xp-adapter-behavior#0.9.9
-@dependency xp-master-behavior ExpandJS/xp-master-behavior#0.9.9
-@dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.9
-@dependency xp-slave-behavior ExpandJS/xp-slave-behavior#0.9.9
+@dependency expandjs ExpandJS/expandjs#0.9.10
+@dependency mat-icons ExpandJS/mat-icons#0.9.10
+@dependency mat-option ExpandJS/mat-option#0.9.10
+@dependency mat-overlay ExpandJS/mat-overlay#0.9.10
+@dependency xp-adapter-behavior ExpandJS/xp-adapter-behavior#0.9.10
+@dependency xp-master-behavior ExpandJS/xp-master-behavior#0.9.10
+@dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.10
+@dependency xp-slave-behavior ExpandJS/xp-slave-behavior#0.9.10
 
-@devDependency mat-demo ExpandJS/mat-demo#0.9.9
-@devDependency mat-divider ExpandJS/mat-divider#0.9.9
-@devDependency mat-icon-button ExpandJS/mat-icon-button#0.9.9
-@devDependency mat-icons ExpandJS/mat-icons#0.9.9
-@devDependency mat-option ExpandJS/mat-option#0.9.9
+@devDependency mat-demo ExpandJS/mat-demo#0.9.10
+@devDependency mat-divider ExpandJS/mat-divider#0.9.10
+@devDependency mat-icon-button ExpandJS/mat-icon-button#0.9.10
+@devDependency mat-icons ExpandJS/mat-icons#0.9.10
+@devDependency mat-option ExpandJS/mat-option#0.9.10
 -->
 
 <link rel="import" href="../polymer/polymer.html">
@@ -255,6 +255,7 @@ It must be used inside a [mat-menu](http://expandjs.com/elements/mat-menu) or in
                     notify: true,
                     observer: '_menuChanged',
                     readOnly: true,
+                    type: Object,
                     value: null
                 },
 
@@ -301,6 +302,7 @@ It must be used inside a [mat-menu](http://expandjs.com/elements/mat-menu) or in
                     notify: true,
                     observer: '_menuChanged',
                     readOnly: true,
+                    type: Object,
                     value: null
                 },
 
