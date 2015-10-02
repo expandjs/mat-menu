@@ -60,7 +60,6 @@ Menus can also contain [mat-submenu](http://expandjs.com/elements/mat-submenu), 
 @demo http://expandjs.com/demo/mat-menu
 
 @adapts mat-overlay /bower_components/mat-overlay/mat-overlay.html
-@behavior xp-adapter-behavior /bower_components/xp-adapter-behavior/xp-adapter-behavior.html
 @behavior xp-master-behavior /bower_components/xp-master-behavior/xp-master-behavior.html
 @behavior xp-referral-behavior /bower_components/xp-referral-behavior/xp-referral-behavior.html
 @behavior xp-targeter-behavior /bower_components/xp-targeter-behavior/xp-targeter-behavior.html
@@ -69,7 +68,6 @@ Menus can also contain [mat-submenu](http://expandjs.com/elements/mat-submenu), 
 @dependency expandjs ExpandJS/expandjs#0.9.10
 @dependency mat-option ExpandJS/mat-option#0.9.10
 @dependency mat-overlay ExpandJS/mat-overlay#0.9.10
-@dependency xp-adapter-behavior ExpandJS/xp-adapter-behavior#0.9.10
 @dependency xp-master-behavior ExpandJS/xp-master-behavior#0.9.10
 @dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.10
 @dependency xp-targeter-behavior ExpandJS/xp-targeter-behavior#0.9.10
@@ -85,7 +83,6 @@ Menus can also contain [mat-submenu](http://expandjs.com/elements/mat-submenu), 
 <link rel="import" href="../expandjs/expandjs.html">
 <link rel="import" href="../mat-option/mat-option.html">
 <link rel="import" href="../mat-overlay/mat-overlay.html">
-<link rel="import" href="../xp-adapter-behavior/xp-adapter-behavior.html">
 <link rel="import" href="../xp-master-behavior/xp-master-behavior.html">
 <link rel="import" href="../xp-referral-behavior/xp-referral-behavior.html">
 <link rel="import" href="../xp-targeter-behavior/xp-targeter-behavior.html">
@@ -120,7 +117,6 @@ Menus can also contain [mat-submenu](http://expandjs.com/elements/mat-submenu), 
 
             // BEHAVIORS
             behaviors: [
-                Polymer.XPAdapterBehavior,
                 Polymer.XPMasterBehavior,
                 Polymer.XPReferralBehavior,
                 Polymer.XPTargeterBehavior
@@ -195,6 +191,21 @@ Menus can also contain [mat-submenu](http://expandjs.com/elements/mat-submenu), 
 
             // PROPERTIES
             properties: {
+
+                /**
+                 * The adapted element.
+                 *
+                 * @attribute adaptee
+                 * @type Element
+                 * @notifies
+                 * @readonly
+                 */
+                adaptee: {
+                    notify: true,
+                    readOnly: true,
+                    type: Object,
+                    value: null
+                },
 
                 /**
                  * The paper's background color.
@@ -304,7 +315,7 @@ Menus can also contain [mat-submenu](http://expandjs.com/elements/mat-submenu), 
 
             // LISTENER
             ready: function () {
-                this._adapt(this.$.matMenuAdaptee);
+                this._setAdaptee(this.$.matMenuAdaptee);
             },
 
             /*********************************************************************/
