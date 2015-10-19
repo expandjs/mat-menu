@@ -14,7 +14,7 @@ For an easier integration, it's recommended to use it in conjunction with
 [mat-option](/http://expandjs.comelements/mat-option).
 
 ```html
-<mat-icon-button icon="navigation:more-vert" target="myMenu" toggles-target></mat-icon-button>
+<mat-icon-button behavior="toggle" icon="navigation:more-vert" target="myMenu"></mat-icon-button>
 <mat-menu id="myMenu">
     <mat-option label="First option"></mat-option>
     <mat-option label="Second option"></mat-option>
@@ -27,7 +27,7 @@ In addition to the default view mode, it provides a
 which is similar to most desktop applications' menus.
 
 ```html
-<mat-icon-button icon="navigation:more-vert" target="myMenu" toggles-target></mat-icon-button>
+<mat-icon-button behavior="toggle" icon="navigation:more-vert" target="myMenu"></mat-icon-button>
 <mat-menu id="myMenu" cascade>
     <mat-option label="First option"></mat-option>
     <mat-option label="Second option"></mat-option>
@@ -38,7 +38,7 @@ which is similar to most desktop applications' menus.
 Menus can also contain [mat-submenu](http://expandjs.com/elements/mat-submenu), allowing for multi level menu.
 
 ```html
-<mat-icon-button icon="navigation:more-vert" target="myMenu" toggles-target></mat-icon-button>
+<mat-icon-button behavior="toggle" icon="navigation:more-vert" target="myMenu"></mat-icon-button>
 <mat-menu id="myMenu">
     <mat-option label="First option"></mat-option>
     <mat-option label="Second option"></mat-option>
@@ -65,18 +65,18 @@ Menus can also contain [mat-submenu](http://expandjs.com/elements/mat-submenu), 
 @behavior xp-targeter-behavior /bower_components/xp-targeter-behavior/xp-targeter-behavior.html
 
 @dependency polymer Polymer/polymer#^1.0.0
-@dependency expandjs ExpandJS/expandjs#0.9.10
-@dependency mat-option ExpandJS/mat-option#0.9.10
-@dependency mat-overlay ExpandJS/mat-overlay#0.9.10
-@dependency xp-master-behavior ExpandJS/xp-master-behavior#0.9.10
-@dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.10
-@dependency xp-targeter-behavior ExpandJS/xp-targeter-behavior#0.9.10
+@dependency expandjs ExpandJS/expandjs#0.9.11
+@dependency mat-option ExpandJS/mat-option#0.9.11
+@dependency mat-overlay ExpandJS/mat-overlay#0.9.11
+@dependency xp-master-behavior ExpandJS/xp-master-behavior#0.9.11
+@dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.11
+@dependency xp-targeter-behavior ExpandJS/xp-targeter-behavior#0.9.11
 
-@devDependency mat-demo ExpandJS/mat-demo#0.9.10
-@devDependency mat-divider ExpandJS/mat-divider#0.9.10
-@devDependency mat-icon-button ExpandJS/mat-icon-button#0.9.10
-@devDependency mat-icons ExpandJS/mat-icons#0.9.10
-@devDependency mat-option ExpandJS/mat-option#0.9.10
+@devDependency mat-demo ExpandJS/mat-demo#0.9.11
+@devDependency mat-divider ExpandJS/mat-divider#0.9.11
+@devDependency mat-icon-button ExpandJS/mat-icon-button#0.9.11
+@devDependency mat-icons ExpandJS/mat-icons#0.9.11
+@devDependency mat-option ExpandJS/mat-option#0.9.11
 -->
 
 <link rel="import" href="../polymer/polymer.html">
