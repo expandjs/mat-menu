@@ -7,9 +7,9 @@ The complete set of contributors may be found at https://expandjs.github.io/CONT
 -->
 
 <!--
-An element used to display a [Material Design menu](http://www.google.com/design/spec/components/menus.html).
+A custom element used to display a [Material Design menu](http://www.google.com/design/spec/components/menus.html).
 
-For an easier integration, it's recommended to use it in conjunction with
+It can be used in conjunction with
 [mat-icon-button](http://expandjs.com/elements/mat-icon-button) and
 [mat-option](/http://expandjs.comelements/mat-option).
 
@@ -53,59 +53,60 @@ Menus can also contain [mat-submenu](http://expandjs.com/elements/mat-submenu), 
 
 @element mat-menu
 @description A custom element used to display a Material Design menu
-@keywords material design, material menu, web app, html5, expandjs, web-components
+@keywords material design, material menu, expandjs, web app, custom elements, web-components
 @group containers
+@hot
+
 @homepage http://expandjs.com/elements/mat-menu
 @repository https://github.com/ExpandJS/mat-menu
 @demo http://expandjs.com/demo/mat-menu
 
-@adapts mat-overlay /bower_components/mat-overlay/mat-overlay.html
-@behavior xp-master-behavior /bower_components/xp-master-behavior/xp-master-behavior.html
-@behavior xp-referral-behavior /bower_components/xp-referral-behavior/xp-referral-behavior.html
-@behavior xp-targeter-behavior /bower_components/xp-targeter-behavior/xp-targeter-behavior.html
+@behavior mat-paper-behavior /bower_components/mat-paper/mat-paper-behavior.html
+@behavior xp-menu-behavior /bower_components/xp-menu-behavior/xp-menu-behavior.html
 
 @dependency polymer Polymer/polymer#^1.0.0
-@dependency expandjs ExpandJS/expandjs#0.9.11
-@dependency mat-option ExpandJS/mat-option#0.9.11
-@dependency mat-overlay ExpandJS/mat-overlay#0.9.11
-@dependency xp-master-behavior ExpandJS/xp-master-behavior#0.9.11
-@dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.11
-@dependency xp-targeter-behavior ExpandJS/xp-targeter-behavior#0.9.11
+@dependency expandjs ExpandJS/expandjs#0.10.0
+@dependency mat-option ExpandJS/mat-option#0.10.0
+@dependency mat-paper ExpandJS/mat-paper#0.10.0
+@dependency xp-menu-behavior ExpandJS/xp-menu-behavior#0.10.0
 
-@devDependency mat-demo ExpandJS/mat-demo#0.9.11
-@devDependency mat-divider ExpandJS/mat-divider#0.9.11
-@devDependency mat-icon-button ExpandJS/mat-icon-button#0.9.11
-@devDependency mat-icons ExpandJS/mat-icons#0.9.11
-@devDependency mat-option ExpandJS/mat-option#0.9.11
+@devDependency mat-demo ExpandJS/mat-demo#0.10.0
+@devDependency mat-divider ExpandJS/mat-divider#0.10.0
+@devDependency mat-icon-button ExpandJS/mat-icon-button#0.10.0
+@devDependency mat-icons ExpandJS/mat-icons#0.10.0
 -->
 
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../expandjs/expandjs.html">
 <link rel="import" href="../mat-option/mat-option.html">
-<link rel="import" href="../mat-overlay/mat-overlay.html">
-<link rel="import" href="../xp-master-behavior/xp-master-behavior.html">
-<link rel="import" href="../xp-referral-behavior/xp-referral-behavior.html">
-<link rel="import" href="../xp-targeter-behavior/xp-targeter-behavior.html">
+<link rel="import" href="../mat-paper/mat-paper-behavior.html">
+<link rel="import" href="../mat-paper/mat-paper-styles.html">
+<link rel="import" href="../xp-menu-behavior/xp-menu-behavior.html">
+<link rel="import" href="../xp-menu-behavior/xp-menu-styles.html">
 
 <dom-module id="mat-menu">
 
-    <template>
+    <template strip-whitespace>
+
+        <style include="mat-paper-styles"></style>
+        <style include="xp-menu-styles"></style>
 
         <style>
-            :host {
-                display: block;
-                overflow: visible;
-                position: absolute;
+            :host .body {
+                box-sizing: border-box;
+                padding: 8px 0;
             }
 
-            :host([cascade]) #matMenuAdaptee::shadow #matOverlayBody {
+            :host-context([cascade]) .body {
                 padding: 16px 0;
             }
         </style>
 
-        <mat-overlay id="matMenuAdaptee" background="[[background]]" context="[[self]]" data="{{data}}" position="[[_computePosition(cascade)]]" showed="{{showed}}" target="{{target}}" z="[[z]]">
-            <content id="content"></content>
-        </mat-overlay>
+        <div class="wrapper">
+            <div class="body">
+                <content></content>
+            </div>
+        </div>
 
     </template>
 
@@ -117,214 +118,42 @@ Menus can also contain [mat-submenu](http://expandjs.com/elements/mat-submenu), 
 
             // BEHAVIORS
             behaviors: [
-                Polymer.XPMasterBehavior,
-                Polymer.XPReferralBehavior,
-                Polymer.XPTargeterBehavior
+                Polymer.MatPaperBehavior,
+                Polymer.XPMenuBehavior
             ],
 
             /*********************************************************************/
-
-            /**
-             * Hides the menu.
-             *
-             * @method hide
-             * @returns {Element}
-             */
-            hide: function () {
-                var self = this;
-                if (self.adaptee) { self.adaptee.hide(); }
-                return self;
-            },
-
-            /**
-             * Shows the menu.
-             *
-             * @method show
-             * @param {Element | string} [target]
-             * @param {*} [data]
-             * @returns {Element}
-             */
-            show: function (target, data) {
-                var self = this;
-                if (self.adaptee) { self.adaptee.show(target, data); }
-                return self;
-            },
-
-            /**
-             * Toggles the menu.
-             *
-             * @method toggle
-             * @param {Element | string} [target]
-             * @param {*} [data]
-             * @returns {Element}
-             */
-            toggle: function (target, data) {
-                var self = this;
-                if (self.adaptee) { self.adaptee.toggle(target, data); }
-                return self;
-            },
-
-            /*********************************************************************/
-
-            /**
-             * Returns the slaves map.
-             *
-             * @method _setupSlaves
-             * @returns {Object}
-             * @private
-             */
-            _setupSlaves: function () {
-                return {submenus: 'mat-submenu'};
-            },
-
-            /*********************************************************************/
-
-            // LISTENERS
-            listeners: {
-                'xp-activate': '_handleActivate'
-            },
-
-            // OBSERVERS
-            observers: [
-                '_submenusChanged(submenus.*)'
-            ],
 
             // PROPERTIES
             properties: {
 
                 /**
-                 * The adapted element.
+                 * The menu's brightness.
                  *
-                 * @attribute adaptee
-                 * @type Element
-                 * @notifies
-                 * @readonly
-                 */
-                adaptee: {
-                    notify: true,
-                    readOnly: true,
-                    type: Object,
-                    value: null
-                },
-
-                /**
-                 * The paper's background color.
-                 *
-                 * @attribute background
+                 * @attribute brightness
                  * @type string
+                 * @default "overlay"
                  */
-                background: {
-                    observer: '_backgroundChanged',
+                brightness: {
                     reflectToAttribute: true,
                     type: String,
-                    value: null
+                    value: 'overlay'
                 },
 
                 /**
-                 * If set to true, the menu is a cascade one.
-                 *
-                 * @attribute cascade
-                 * @type boolean
-                 * @default false
-                 * @notifies
-                 */
-                cascade: {
-                    notify: true,
-                    reflectToAttribute: true,
-                    type: Boolean,
-                    value: false
-                },
-
-                /**
-                 * The element's data.
-                 *
-                 * @attribute data
-                 * @type *
-                 * @notifies
-                 */
-                data: {
-                    notify: true,
-                    value: null
-                },
-
-                /**
-                 * If set to true, the overlay is showed.
-                 *
-                 * @attribute showed
-                 * @type boolean
-                 * @default false
-                 * @notifies
-                 */
-                showed: {
-                    notify: true,
-                    reflectToAttribute: true,
-                    type: Boolean,
-                    value: false
-                },
-
-                /**
-                 * The slave submenus.
-                 *
-                 * @attribute submenus
-                 * @type Array
-                 * @notifies
-                 * @readonly
-                 */
-                submenus: {
-                    notify: true,
-                    readOnly: true,
-                    type: Array,
-                    value: function () { return []; }
-                },
-
-                /**
-                 * The paper's z-axis position.
+                 * The menu's z-axis position.
                  *
                  * @attribute z
                  * @type number
                  * @default 8
-                 * @readonly
+                 * @notifies
                  */
                 z: {
-                    readOnly: true,
+                    notify: true,
+                    reflectToAttribute: true,
                     type: Number,
                     value: 8
                 }
-            },
-
-            /*********************************************************************/
-
-            // COMPUTER
-            _computePosition: function (cascade) {
-                return cascade ? 'baseline' : 'over';
-            },
-
-            /*********************************************************************/
-
-            // OBSERVER
-            _backgroundChanged: function (post) {
-                XP.forEach(this.submenus || [], function (submenu) { submenu.background = post; });
-            },
-
-            // OBSERVER
-            _submenusChanged: function () {
-                this.cascade = this.cascade || this.submenus.length > 0;
-            },
-
-            /*********************************************************************/
-
-            // LISTENER
-            ready: function () {
-                this._setAdaptee(this.$.matMenuAdaptee);
-            },
-
-            /*********************************************************************/
-
-            // HANDLER
-            _handleActivate: function (event) {
-                var self = this;
-                if (!XP.matches(event.detail.firer, 'mat-option') || event.detail.firer.toggleable) { return; }
-                XP.delay(function () { if (!event.defaultPrevented) { self.hide(); } });
             }
         });
     </script>
